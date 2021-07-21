@@ -36,7 +36,7 @@
 # 
 
 # 配置网址
-url1=https://github.com/Morton-L/HeadScript_Linux/raw/main
+url1=https://raw.githubusercontent.com/Morton-L/HeadScript_Linux/main
 url2=https://tools.topstalk.com/shellscript
 
 
