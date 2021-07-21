@@ -62,6 +62,15 @@ if [ -n "$CPUInfo" ]; then
 	source CPUInfo.sh
 fi
 
+if [ -n "$_EXIT" ]; then
+	curl -Oks $url1/_EXIT.sh
+	if [ $? -ne 0 ]; then
+            curl -Oks $url2/_EXIT.sh
+            [ $? -ne 0 ] && error
+	fi
+	source _EXIT.sh
+fi
+
 
 function error (){
 	echo "请检查网络!"
