@@ -31,6 +31,7 @@
 # 		$[cname|cores|freq|ccache]
 # 		分别对应:型号/核心数量/频率(不带单位)/缓存容量
 # 
+# 	_EXIT  -  [命令中断提示]
 # 
 # Copyrights © 2017 - 2021 Topstalk. All Rights Reserved.
 # 
