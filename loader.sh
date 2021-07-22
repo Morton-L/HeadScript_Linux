@@ -44,6 +44,8 @@ url2=https://tools.topstalk.com/shellscript
 # 提取变量
 font=$(echo $* | grep -o 'font')
 CPUInfo=$(echo $* | grep -o 'CPUInfo')
+Error=$(echo $* | grep -o 'error')
+TCPCC=$(echo $* | grep -o 'TCPCC')
 
 if [ -n "$font" ]; then
 	curl -Oks $url1/font.sh
@@ -61,6 +63,24 @@ if [ -n "$CPUInfo" ]; then
             [ $? -ne 0 ] && error
 	fi
 	source CPUInfo.sh
+fi
+
+if [ -n "$error" ]; then
+	curl -Oks $url1/error.sh
+	if [ $? -ne 0 ]; then
+            curl -Oks $url2/error.sh
+            [ $? -ne 0 ] && error
+	fi
+	source error.sh
+fi
+
+if [ -n "$TCPCC" ]; then
+	curl -Oks $url1/TCPCC.sh
+	if [ $? -ne 0 ]; then
+            curl -Oks $url2/TCPCC.sh
+            [ $? -ne 0 ] && error
+	fi
+	source TCPCC.sh
 fi
 
 
