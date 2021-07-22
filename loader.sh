@@ -44,6 +44,7 @@ url2=https://tools.topstalk.com/shellscript
 # 提取变量
 font=$(echo $* | grep -o 'font')
 CPUInfo=$(echo $* | grep -o 'CPUInfo')
+_EXIT=$(echo $* | grep -o '_EXIT')
 
 if [ -n "$font" ]; then
 	curl -Oks $url1/font.sh
