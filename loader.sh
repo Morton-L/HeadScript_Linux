@@ -31,7 +31,7 @@
 # 		$[cname|cores|freq|ccache]
 # 		分别对应:型号/核心数量/频率(不带单位)/缓存容量
 # 
-# 	_EXIT  -  [命令中断提示]
+# 	getLinuxKernelVersion  -  [检测内核版本]
 # 
 # Copyrights © 2017 - 2021 Topstalk. All Rights Reserved.
 # 
@@ -46,6 +46,7 @@ font=$(echo $* | grep -o 'font')
 CPUInfo=$(echo $* | grep -o 'CPUInfo')
 Error=$(echo $* | grep -o 'error')
 TCPCC=$(echo $* | grep -o 'TCPCC')
+getLinuxKernelVersion=$(echo $* | grep -o 'getLinuxKernelVersion')
 
 if [ -n "$font" ]; then
 	curl -Oks $url1/font.sh
@@ -81,6 +82,15 @@ if [ -n "$TCPCC" ]; then
             [ $? -ne 0 ] && error
 	fi
 	source TCPCC.sh
+fi
+
+if [ -n "$getLinuxKernelVersion" ]; then
+	curl -Oks $url1/getLinuxKernelVersion.sh
+	if [ $? -ne 0 ]; then
+            curl -Oks $url2/getLinuxKernelVersion.sh
+            [ $? -ne 0 ] && error
+	fi
+	source getLinuxKernelVersion.sh
 fi
 
 
