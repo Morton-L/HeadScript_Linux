@@ -49,46 +49,66 @@ TCPCC=$(echo $* | grep -o 'TCPCC')
 getLinuxKernelVersion=$(echo $* | grep -o 'getLinuxKernelVersion')
 
 if [ -n "$font" ]; then
-	curl -Oks $url1/font.sh
-	if [ $? -ne 0 ]; then
+	if [ -d font.sh ]; then
+		echo "从本地加载脚本"
+	else
+		curl -Oks $url1/font.sh
+		if [ $? -ne 0 ]; then
             curl -Oks $url2/font.sh
             [ $? -ne 0 ] && error
+		fi
 	fi
 	source font.sh
 fi
 
 if [ -n "$CPUInfo" ]; then
-	curl -Oks $url1/CPUInfo.sh
-	if [ $? -ne 0 ]; then
+	if [ -d CPUInfo.sh ]; then
+		echo "从本地加载脚本"
+	else
+		curl -Oks $url1/CPUInfo.sh
+		if [ $? -ne 0 ]; then
             curl -Oks $url2/CPUInfo.sh
             [ $? -ne 0 ] && error
+		fi
 	fi
 	source CPUInfo.sh
 fi
 
 if [ -n "$error" ]; then
-	curl -Oks $url1/error.sh
-	if [ $? -ne 0 ]; then
+	if [ -d error.sh ]; then
+		echo "从本地加载脚本"
+	else
+		curl -Oks $url1/error.sh
+		if [ $? -ne 0 ]; then
             curl -Oks $url2/error.sh
             [ $? -ne 0 ] && error
+		fi
 	fi
 	source error.sh
 fi
 
 if [ -n "$TCPCC" ]; then
-	curl -Oks $url1/TCPCC.sh
-	if [ $? -ne 0 ]; then
+	if [ -d TCPCC.sh ]; then
+		echo "从本地加载脚本"
+	else
+		curl -Oks $url1/TCPCC.sh
+		if [ $? -ne 0 ]; then
             curl -Oks $url2/TCPCC.sh
             [ $? -ne 0 ] && error
+		fi
 	fi
 	source TCPCC.sh
 fi
 
 if [ -n "$getLinuxKernelVersion" ]; then
-	curl -Oks $url1/getLinuxKernelVersion.sh
-	if [ $? -ne 0 ]; then
+	if [ -d TCPCC.sh ]; then
+		echo "从本地加载脚本"
+	else
+		curl -Oks $url1/getLinuxKernelVersion.sh
+		if [ $? -ne 0 ]; then
             curl -Oks $url2/getLinuxKernelVersion.sh
             [ $? -ne 0 ] && error
+		fi
 	fi
 	source getLinuxKernelVersion.sh
 fi
