@@ -49,7 +49,7 @@ TCPCC=$(echo $* | grep -o 'TCPCC')
 getLinuxKernelVersion=$(echo $* | grep -o 'getLinuxKernelVersion')
 
 if [ -n "$font" ]; then
-	if [ -d font.sh ]; then
+	if [ -d ${BASH_SOURCE[0]}/font.sh ]; then
 		echo "从本地加载脚本"
 	else
 		curl -Oks $url1/font.sh
@@ -62,7 +62,7 @@ if [ -n "$font" ]; then
 fi
 
 if [ -n "$CPUInfo" ]; then
-	if [ -d CPUInfo.sh ]; then
+	if [ -d ${BASH_SOURCE[0]}/CPUInfo.sh ]; then
 		echo "从本地加载脚本"
 	else
 		curl -Oks $url1/CPUInfo.sh
@@ -75,7 +75,7 @@ if [ -n "$CPUInfo" ]; then
 fi
 
 if [ -n "$error" ]; then
-	if [ -d error.sh ]; then
+	if [ -d ${BASH_SOURCE[0]}/error.sh ]; then
 		echo "从本地加载脚本"
 	else
 		curl -Oks $url1/error.sh
@@ -88,7 +88,7 @@ if [ -n "$error" ]; then
 fi
 
 if [ -n "$TCPCC" ]; then
-	if [ -d TCPCC.sh ]; then
+	if [ -d ${BASH_SOURCE[0]}/TCPCC.sh ]; then
 		echo "从本地加载脚本"
 	else
 		curl -Oks $url1/TCPCC.sh
@@ -101,7 +101,7 @@ if [ -n "$TCPCC" ]; then
 fi
 
 if [ -n "$getLinuxKernelVersion" ]; then
-	if [ -d TCPCC.sh ]; then
+	if [ -d ${BASH_SOURCE[0]}/getLinuxKernelVersion.sh ]; then
 		echo "从本地加载脚本"
 	else
 		curl -Oks $url1/getLinuxKernelVersion.sh
